@@ -1,7 +1,7 @@
 import {Component, NgModule} from "@angular/core";
 import {BrowserModule} from "@angular/platform-browser";
 import {CommonModule} from "@angular/common";
-import {ProgressModule} from "./ProgressModule";
+import {NgProgressModule} from "./NgProgressModule";
 import {Observable} from "rxjs/Rx";
 import {LoadingList} from "./Service/LoadingList";
 import {EventEmitter} from "@angular/core";
@@ -80,7 +80,7 @@ export class AppComponent {
     imports     : [
         BrowserModule,
         CommonModule,
-        ProgressModule
+        NgProgressModule
     ],
     exports     : [AppComponent],
     providers   : [],

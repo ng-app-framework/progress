@@ -3,12 +3,12 @@ import {LoadingConfig} from "./Service/LoadingConfig";
 import {Loader} from "./Service/Loader";
 import {LoadingList} from "./Service/LoadingList";
 import {LoadingComponent} from "./Component/LoadingComponent";
-import {CoreModule} from "@ng-app-framework/core";
+import {NgCoreModule} from "@ng-app-framework/core";
 import {CommonModule} from "@angular/common";
 
 @NgModule({
     imports     : [
-        CoreModule,
+        NgCoreModule,
         CommonModule
     ],
     declarations: [LoadingComponent],
@@ -19,7 +19,7 @@ import {CommonModule} from "@angular/common";
         LoadingList
     ]
 })
-export class ProgressModule {
+export class NgProgressModule {
 
     /**
      * Initialization occurs here before anything else, so we can make sure all subscriptions are active that need to be
@@ -30,7 +30,7 @@ export class ProgressModule {
 
     static forRoot(loadingConfig): ModuleWithProviders {
         return {
-            ngModule : ProgressModule,
+            ngModule : NgProgressModule,
             providers: [
                 {
                     provide : LoadingConfig,
