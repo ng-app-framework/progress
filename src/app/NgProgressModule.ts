@@ -5,11 +5,13 @@ import {LoadingList} from "./Service/LoadingList";
 import {LoadingComponent} from "./Component/LoadingComponent";
 import {NgCoreModule} from "@ng-app-framework/core";
 import {CommonModule} from "@angular/common";
+import {NgValidationModule} from "@ng-app-framework/validation";
 
 @NgModule({
     imports     : [
         NgCoreModule,
-        CommonModule
+        CommonModule,
+        NgValidationModule
     ],
     declarations: [LoadingComponent],
     exports     : [LoadingComponent],
