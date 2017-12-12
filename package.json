@@ -45,7 +45,7 @@
     "@angular/core": "^5.1.0",
     "@angular/platform-browser": "^5.1.0",
     "@angular/platform-browser-dynamic": "^5.1.0",
-    "@ng-app-framework/core": "^1.0.4",
+    "@ng-app-framework/core": "^1.0.5",
     "@ng-app-framework/validation": "^1.0.6",
     "@types/jasmine": "2.5.45",
     "@types/jquery": "^2.0.48",
