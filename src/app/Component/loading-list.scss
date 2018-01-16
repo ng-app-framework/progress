@@ -30,12 +30,14 @@
                 &.finished {
                     color: #51A351;
                     .fa-check-circle {
+                        color: #51A351;
                         display: block;
                     }
                 }
                 &.not-yet {
                     color: #aeaeae;
                     .fa-circle-o {
+                        color: #aeaeae;
                         display: block;
                     }
                 }
