@@ -1,8 +1,8 @@
-import {LoadingConfig} from "./LoadingConfig";
+import {LoadingConfig}            from "./LoadingConfig";
 import {EventEmitter, Injectable} from "@angular/core";
-import {Observable} from "rxjs/Rx";
-import {Progress} from "./Progress";
-import {Value} from "@ng-app-framework/core";
+import {Observable}               from "rxjs/Rx";
+import {Progress}                 from "./Progress";
+import {Value}                    from "@ng-app-framework/core";
 
 @Injectable()
 export class LoadingList extends Progress {
@@ -18,9 +18,15 @@ export class LoadingList extends Progress {
 
     onError = new EventEmitter<string>();
     onClear = new EventEmitter<string>();
+    start$  = new EventEmitter<string>();
+    finish$ = new EventEmitter<string>();
+    error$  = new EventEmitter<string>();
 
     constructor(public config: LoadingConfig) {
         super();
+        this.start$.subscribe((value) => this.start(value));
+        this.finish$.subscribe((value) => this.finish(value));
+        this.error$.subscribe((value) => this.error(value));
     }
 
     start(key: string) {
@@ -72,15 +78,15 @@ export class LoadingList extends Progress {
 
     timeExecute(key: string) {
         Observable.interval(this.longRunningIntervalInMilliseconds)
-            .timeInterval()
-            .take(this.longRunningCheckLimit)
-            .subscribe({
-                complete: () => {
-                    if (this.isOperationLoading(key)) {
-                        this.longRunning[key] = LoadingList.STARTED;
-                    }
-                }
-            });
+                  .timeInterval()
+                  .take(this.longRunningCheckLimit)
+                  .subscribe({
+                      complete: () => {
+                          if (this.isOperationLoading(key)) {
+                              this.longRunning[key] = LoadingList.STARTED;
+                          }
+                      }
+                  });
 
     }
 
