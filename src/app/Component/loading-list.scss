@@ -1,55 +1,53 @@
-.loading-list {
+.loading-container {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 1000;
+    background-color: rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: stretch;
+    align-content: stretch;
     > div {
-        position:fixed;
-        left:0;
-        right:0;
-        top:0;
-        bottom:0;
-        z-index:1000;
-        background-color:rgba(0,0,0,0.2);
-        display:flex;
-        align-items:stretch;
-        align-content:stretch;
+        margin: auto;
         > div {
-            margin: auto;
+            padding: 10px;
+            background-color: #ffffff;
+            box-shadow: 1px 1px 5px #777;
             > div {
-                padding: 10px;
-                background-color: #ffffff;
-                box-shadow: 1px 1px 5px #777;
-                > div {
-                    padding: 10px 50px 10px 10px;
-                    position: relative;
-                    .fa {
-                        position: absolute;
-                        right: 0;
-                        font-size: 20px;
-                        display: none;
-                        &.fa-circle-o-notch {
-                            font-size: 18px;
-                        }
+                padding: 10px 50px 10px 10px;
+                position: relative;
+                .fa {
+                    position: absolute;
+                    right: 0;
+                    font-size: 20px;
+                    display: none;
+                    &.fa-circle-o-notch {
+                        font-size: 18px;
                     }
-                    &.finished {
-                        color: #51A351;
-                        .fa-check-circle {
-                            display: block;
-                        }
+                }
+                &.finished {
+                    color: #51A351;
+                    .fa-check-circle {
+                        display: block;
                     }
-                    &.not-yet {
-                        color: #aeaeae;
-                        .fa-circle-o {
-                            display: block;
-                        }
+                }
+                &.not-yet {
+                    color: #aeaeae;
+                    .fa-circle-o {
+                        display: block;
                     }
-                    &.current {
-                        .fa-circle-o-notch {
-                            display: block;
-                        }
+                }
+                &.current {
+                    .fa-circle-o-notch {
+                        display: block;
                     }
-                    &.error {
-                        .fa-times-circle {
-                            color: #ff2200;
-                            display: block;
-                        }
+                }
+                &.error {
+                    .fa-times-circle {
+                        color: #ff2200;
+                        display: block;
                     }
                 }
             }

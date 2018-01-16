@@ -1,11 +1,10 @@
-import {ViewEncapsulation, Component} from '@angular/core';
+import {Component} from '@angular/core';
 import {LoadingList} from "../Service/LoadingList";
 import {Name} from "@ng-app-framework/validation";
 
 @Component({
     selector     : 'div.loading-list',
     templateUrl  : './loading-list.html',
-    encapsulation: ViewEncapsulation.None,
     styleUrls: ['./loading-list.scss']
 })
 @Name('LoadingComponent')
