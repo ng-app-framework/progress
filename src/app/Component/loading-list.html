@@ -1,10 +1,6 @@
 <div class="loading-container" *ngIf="list.shouldDisplay()">
     <div>
         <div>
-            <div class="current" *ngIf="getKeys(list.longRunning).length > 0">
-                <span class="fa fa-circle-o-notch fa-spin"></span>
-                <span class="loading-label"><strong>Still processing... Please wait.</strong></span>
-            </div>
             <ng-container *ngFor="let name of getKeys(list.operations)">
                 <div [class.not-yet]="list.operations[name] == 0"
                      [class.current]="list.operations[name] == 1" [class.finished]="list.operations[name] == 2"

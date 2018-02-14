@@ -11,9 +11,6 @@ export class LoadingList extends Progress {
     static STARTED                           = 1;
     static FINISHED                          = 2;
     static ERRED                             = 3;
-           longRunning: any                  = {};
-           longRunningIntervalInMilliseconds = 1000;
-           longRunningCheckLimit             = 5;
            clearDelayInMilliseconds          = 500;
 
     onError = new EventEmitter<string>();
@@ -32,7 +29,6 @@ export class LoadingList extends Progress {
     start(key: string) {
         this.operations[key] = LoadingList.STARTED;
         this.onStart.emit(key);
-        this.timeExecute(key);
 
     }
 
@@ -50,7 +46,6 @@ export class LoadingList extends Progress {
 
     clear(keys: string[]) {
         for (let key of keys) {
-            delete this.longRunning[key];
             setTimeout(() => {
                 if (this.shouldClear(key)) {
                     this.onClear.emit(key);
@@ -62,7 +57,6 @@ export class LoadingList extends Progress {
 
     abort(keys: string[]) {
         for (let key of keys) {
-            delete this.longRunning[key];
             delete this.operations[key];
         }
     }
@@ -73,24 +67,5 @@ export class LoadingList extends Progress {
 
     shouldDisplay() {
         return this.config.enabled && Value.hasProperties(this.operations);
-    }
-
-
-    timeExecute(key: string) {
-        Observable.interval(this.longRunningIntervalInMilliseconds)
-                  .timeInterval()
-                  .take(this.longRunningCheckLimit)
-                  .subscribe({
-                      complete: () => {
-                          if (this.isOperationLoading(key)) {
-                              this.longRunning[key] = LoadingList.STARTED;
-                          }
-                      }
-                  });
-
-    }
-
-    private isOperationLoading(key: string) {
-        return this.operations[key] === LoadingList.STARTED;
     }
 }
